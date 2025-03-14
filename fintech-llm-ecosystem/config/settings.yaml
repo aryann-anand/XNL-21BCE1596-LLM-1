@@ -1,0 +1,17 @@
+binance:
+  api_url: "https://api.binance.com"
+  ws_url: "wss://stream.binance.com:443/ws"
+  streams:
+    - "btcusdt@trade"
+    - "ethusdt@trade"
+
+models:
+  primary: "C:\\Users\\aryan\\Documents\\Programs\\Projects\\fintech-llm-ecosystem\\models\\llama-2-7b-chat.Q4_K_M.gguf"
+  secondary: "C:\\Users\\aryan\\Documents\\Programs\\Projects\\fintech-llm-ecosystem\\models\\llama-2-13b-chat.Q4_K_M.gguf"
+  n_ctx: 2048
+  n_gpu_layers: 20
+
+system:
+  max_retries: 3
+  timeout: 30
+  cache_dir: "./cache"
