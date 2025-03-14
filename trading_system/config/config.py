@@ -1,12 +1,21 @@
 # config/config.py
 class Config:
+    # Path to your local Llama GGUF model (if using)
+    LLAMA_MODEL_PATH = "models/llama/llama-7b.gguf"
+    
+    # API keys (replace with your own)
     BINANCE_API_URL = "https://api.binance.com/"
     BINANCE_WS_URL = "wss://stream.binance.com:443"
-    BINANCE_API_KEY = "YOUR_BINANCE_API_KEY"  # Replace with your key
-    BINANCE_SECRET = "YOUR_BINANCE_SECRET"    # Replace with your secret
-    OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"    # Replace with your key (for LLM)
-    LLAMA_MODEL_PATH = "C:\\Users\\aryan\\Documents\\Programs\\Projects\\xnl\\fintech-llm-ecosystem\\models\\llama-2-13b-chat.Q4_K_M.gguf"
+    BINANCE_API_KEY = "ORRQYICkGSettsnRoAa0hfLK5dJ8ho0KHKX0bxLgDbHDYqUflPvA7ixpM0ecszqm"
+    BINANCE_SECRET = "YjMMX7BRFZ1V4WZCrDKMI1fqcjIjKeSa9vfB4Q35zAb0tdM9ScRteDrM3euwlq4o"
+    
+    # Asset configuration
     ASSETS = {
-        "stocks": ["AAPL", "GOOGL"],
-        "crypto": ["BTCUSDT", "ETHUSDT"]
+        "crypto": ["BTCUSDT", "ETHUSDT"],
+        "stocks": ["AAPL", "MSFT"],
+        "forex": ["EURUSD"],
+        "commodities": ["GC=F"]
     }
+    
+    # Standardized index column name for all historical data
+    INDEX_COL = "timestamp"
