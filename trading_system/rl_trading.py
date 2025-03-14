@@ -64,7 +64,7 @@ class TradingEnv(gym.Env):
         return prices
 
 def train_rl_agent(symbol):
-    file_path = f"data\\historical\\{symbol.lower()}_1h.csv" if "USDT" in symbol else f"data\\historical\\{symbol.lower()}.csv"
+    file_path = f"trading_system\\data\\historical\\{symbol.lower()}_1h.csv" if "USDT" in symbol else f"trading_system\\data\\historical\\{symbol.lower()}.csv"
     
     df = pd.read_csv(file_path, index_col=Config.INDEX_COL)
     
@@ -75,7 +75,7 @@ def train_rl_agent(symbol):
     env = TradingEnv(df)
     model = PPO("MlpPolicy", env, verbose=1)
     model.learn(total_timesteps=10000)
-    model.save(f"models\\rl_agents\\ppo_{symbol.lower()}")
+    model.save(f"trading_system\\models\\rl_agents\\ppo_{symbol.lower()}")
     return model
 
 if __name__ == "__main__":

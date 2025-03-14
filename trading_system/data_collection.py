@@ -41,10 +41,10 @@ def collect_all_data():
         for symbol in symbols:
             if asset_type == "crypto":
                 df = fetch_binance_data(symbol)
-                df.to_csv(f"data\\historical\\{symbol.lower()}_1h.csv")
+                df.to_csv(f"trading_system\\data\\historical\\{symbol.lower()}_1h.csv")
             else:  # stocks, forex, commodities
                 df = fetch_stock_data(symbol)
-                df.to_csv(f"data\\historical\\{symbol.lower()}.csv")
+                df.to_csv(f"trading_system\\data\\historical\\{symbol.lower()}.csv")
             print(f"Collected data for {symbol}")
 
 if __name__ == "__main__":
