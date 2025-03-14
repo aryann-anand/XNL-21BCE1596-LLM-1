@@ -4,9 +4,11 @@ from stable_baselines3 import PPO
 from utils.metrics import calculate_sharpe_ratio, calculate_sortino_ratio, calculate_drawdown
 import pandas as pd
 import numpy as np
+from config.config import Config
 
 def backtest_strategy(symbol):
-    df = pd.read_csv(f"data\\historical\\{symbol.lower()}_1h.csv" if "USDT" in symbol else f"data\\historical\\{symbol.lower()}.csv", index_col="open_time")
+    file_path = f"data\\historical\\{symbol.lower()}_1h.csv" if "USDT" in symbol else f"data\\historical\\{symbol.lower()}.csv"
+    df = pd.read_csv(file_path, index_col=Config.INDEX_COL)
     env = TradingEnv(df)
     model = PPO.load(f"models\\rl_agents\\ppo_{symbol.lower()}")
     obs, _ = env.reset()

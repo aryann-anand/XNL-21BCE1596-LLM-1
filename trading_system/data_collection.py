@@ -24,6 +24,7 @@ def fetch_binance_data(symbol, interval="1h", start_time="2020-01-01", end_time=
     ])
     df["open_time"] = pd.to_datetime(df["open_time"], unit="ms")
     df.set_index("open_time", inplace=True)
+    df.index.name = Config.INDEX_COL  # Standardized to "timestamp"
     df = df[["open", "high", "low", "close", "volume"]].astype(float)
     return df
 
@@ -32,6 +33,7 @@ def fetch_stock_data(symbol, start_date="2020-01-01", end_date="2023-01-01"):
     df = stock.history(start=start_date, end=end_date)
     df = df[["Open", "High", "Low", "Close", "Volume"]]
     df.columns = ["open", "high", "low", "close", "volume"]
+    df.index.name = Config.INDEX_COL  # Standardized to "timestamp"
     return df
 
 def collect_all_data():
@@ -40,7 +42,7 @@ def collect_all_data():
             if asset_type == "crypto":
                 df = fetch_binance_data(symbol)
                 df.to_csv(f"data\\historical\\{symbol.lower()}_1h.csv")
-            else:  # stocks, forex, commodities via Yahoo Finance
+            else:  # stocks, forex, commodities
                 df = fetch_stock_data(symbol)
                 df.to_csv(f"data\\historical\\{symbol.lower()}.csv")
             print(f"Collected data for {symbol}")

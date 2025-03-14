@@ -4,6 +4,7 @@ from gymnasium import spaces
 import numpy as np
 import pandas as pd
 from stable_baselines3 import PPO
+from config.config import Config
 
 class TradingEnv(gym.Env):
     def __init__(self, df):
@@ -63,7 +64,8 @@ class TradingEnv(gym.Env):
         return prices
 
 def train_rl_agent(symbol):
-    df = pd.read_csv(f"data\\historical\\{symbol.lower()}_1h.csv" if "USDT" in symbol else f"data\\historical\\{symbol.lower()}.csv", index_col="open_time")
+    file_path = f"data\\historical\\{symbol.lower()}_1h.csv" if "USDT" in symbol else f"data\\historical\\{symbol.lower()}.csv"
+    df = pd.read_csv(file_path, index_col=Config.INDEX_COL)
     env = TradingEnv(df)
     model = PPO("MlpPolicy", env, verbose=1)
     model.learn(total_timesteps=10000)

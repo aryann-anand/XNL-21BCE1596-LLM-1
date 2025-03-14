@@ -1,7 +1,7 @@
 # config/config.py
 class Config:
     # Path to your local Llama GGUF model (if using)
-    LLAMA_MODEL_PATH = "models/llama/llama-7b.gguf"
+    LLAMA_MODEL_PATH = "C:\\Users\\aryan\\Documents\\Programs\\Projects\\xnl\\fintech-llm-ecosystem\\models\\llama-2-13b-chat.Q4_K_M.gguf"
     
     # API keys (replace with your own)
     BINANCE_API_URL = "https://api.binance.com/"
