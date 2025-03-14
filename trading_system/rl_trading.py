@@ -65,7 +65,13 @@ class TradingEnv(gym.Env):
 
 def train_rl_agent(symbol):
     file_path = f"data\\historical\\{symbol.lower()}_1h.csv" if "USDT" in symbol else f"data\\historical\\{symbol.lower()}.csv"
+    
     df = pd.read_csv(file_path, index_col=Config.INDEX_COL)
+    
+    if len(df) < 10:
+        print(f"Insufficient data for {symbol}: only {len(df)} rows. Skipping training.")
+        return None
+
     env = TradingEnv(df)
     model = PPO("MlpPolicy", env, verbose=1)
     model.learn(total_timesteps=10000)
