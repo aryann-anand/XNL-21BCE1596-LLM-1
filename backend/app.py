@@ -11,7 +11,7 @@ app = FastAPI()
 # Allow CORS for requests coming from our frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://xnl-21bce1596-llm-1.vercel.app/"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
