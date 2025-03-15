@@ -1,0 +1,2 @@
+{"symbol": "BTCUSDT", "amount": 2.1, "price": "84300.10000000", "timestamp": "2025-03-15T11:26:09.577931", "balance_after": 7.9}
+{"symbol": "BTCUSDT", "amount": 2.1, "price": "84300.10000000", "timestamp": "2025-03-15T11:26:14.975202", "balance_after": 5.800000000000001}

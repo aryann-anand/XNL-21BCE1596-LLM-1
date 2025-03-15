@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+requests
+websockets
+pydantic
+numpy
+pandas
+scikit-learn
+xgboost
+tensorflow
